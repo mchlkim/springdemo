@@ -39,4 +39,13 @@ public class ApiController {
         System.out.println(id);
         return requestDto;
     }
+
+    // Parameter에 account 값 추가 필요
+    @DeleteMapping("/delete/{userId}")
+    public void delete(@PathVariable Long userId, @RequestParam String account){
+        System.out.println(userId);
+        System.out.println(account);
+
+        // delete가 완료되면 HTTP Status Code 200 반환
+    }
 }
