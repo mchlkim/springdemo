@@ -1,15 +1,18 @@
 package com.example.demo.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.databind.PropertyNamingStrategy;
+import com.fasterxml.jackson.databind.annotation.JsonNaming;
 
 import java.util.List;
 
+// @JsonNaming으로 케이스를 지정해서 전역 설정을 할 수 있다.
+@JsonNaming(value = PropertyNamingStrategy.SnakeCaseStrategy.class)
 public class PutReqeustDto {
 
     private String name;
     private int age;
 
-    @JsonProperty("car_list")
     private List<CarDto> carList;
 
     public String getName() {

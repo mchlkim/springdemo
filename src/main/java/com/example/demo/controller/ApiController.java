@@ -4,9 +4,6 @@ import com.example.demo.dto.PostRequestDto;
 import com.example.demo.dto.PutReqeustDto;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Map;
-import java.util.Objects;
-
 @RestController // 해당 Class는 REST API를 처리하는 Controller
 @RequestMapping("/api") // Requset Mapping URI를 지정해주는 Annotation
 public class ApiController {
@@ -37,8 +34,9 @@ public class ApiController {
 
     }
 
-    @PutMapping("/put")
-    public void put(@RequestBody PutReqeustDto requestDto) {
-        System.out.println(requestDto);
+    @PutMapping("/put/{userId}")
+    public PutReqeustDto put(@RequestBody PutReqeustDto requestDto, @PathVariable(name = "userId") Long id) {
+        System.out.println(id);
+        return requestDto;
     }
 }
