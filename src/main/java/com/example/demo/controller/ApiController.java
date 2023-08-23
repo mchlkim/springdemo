@@ -2,6 +2,9 @@ package com.example.demo.controller;
 
 import com.example.demo.dto.PostRequestDto;
 import com.example.demo.dto.PutReqeustDto;
+import com.example.demo.dto.User;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController // 해당 Class는 REST API를 처리하는 Controller
@@ -47,5 +50,22 @@ public class ApiController {
         System.out.println(account);
 
         // delete가 완료되면 HTTP Status Code 200 반환
+    }
+
+
+    @GetMapping("/text")
+    public String text(@RequestParam String account){
+        return account;
+    }
+
+    // request -> object mapper -> object -> method -> object -> object mapper -> json -> response
+    @PostMapping("/json")
+    public User json(@RequestBody User user){
+        return user;
+    }
+
+    @PutMapping("/put")
+    public ResponseEntity<User> put(@RequestBody User user){
+        return ResponseEntity.status(HttpStatus.CREATED).body(user);
     }
 }
